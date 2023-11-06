@@ -1,0 +1,25 @@
+﻿@model IEnumerable<PublicationResponse>
+
+@{
+    ViewBag.Title = "Author";
+}
+
+<div class="container">
+
+    <div class="flex">
+        <div class="flex-1">
+            <a asp-controller="Authors" asp-action="CreatePublication" class="button-link button-green-back">Create article</a>
+        </div>
+    </div>
+
+    @foreach (var publication in Model)
+    {
+        <div class="preview-publication-box">
+            <h2>@publication.Title</h2>
+            <p>@publication.ShortDescription</p>
+            <a asp-controller="Publications" asp-action="PublicationDetails" asp-route-id="@publication.Id" class="button-link button-blue-back">Go to publication.</a>
+            <a asp-controller="Authors" asp-action="EditPublication" asp-route-id="@publication.Id" class="button-link button-orange-back">Update article.</a>
+            <a asp-controller="Authors" asp-action="DeletePublication" asp-route-id="@publication.Id" class="button-link button-red-back">Delete article.</a>
+        </div>
+    }
+</div>
